@@ -1,11 +1,12 @@
 import AssignmentCard from "./AssignmentCard";
 
-function StatusCard() {
+function StatusCard({ title, cards }) {
+    console.log(title, cards);
     return (
-        <>
-            <h1>To do</h1>
-            <AssignmentCard />
-        </>
+        <div>
+            <h1>{title}</h1>
+            {cards.map((card, i) => <AssignmentCard key={i} card={card} />)}
+        </div>
     );
 }
 
