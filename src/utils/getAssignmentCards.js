@@ -18,8 +18,12 @@ export default function getAssignmentCards(setCards) {
             }
             cardsArr.push(newCardObj);
         }
-        console.log(cardsArr);
-        setCards(cardsArr);
+        if (cardsArr.lenght > 0) {
+            setCards(cardsArr);
+        }
+        else {
+            console.log("Error");
+        }
     })
 
 }

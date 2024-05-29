@@ -1,4 +1,5 @@
-import { updateAssignmentCard } from "../utils/updateAssignmentCard";
+import { updateAssignmentCard } from "../utils/updateAssignmentCard.js";
+import { deleteAssignmentCard } from "../utils/deleteAssignmentCard.js";
 
 function AssignmentCard({ card }) {
     const { firebaseKey, assignment, assigned, category, status } = card;
@@ -39,12 +40,11 @@ function AssignmentCard({ card }) {
     function handleCardFormSubmit(event) {
         event.preventDefault();
         if (toDo) {
-            console.log(tempName, firebaseKey, "in progress");
             updateAssignmentCard(firebaseKey, "in progress", tempName);
         } else if (inProgress) {
             updateAssignmentCard(firebaseKey, "done", assigned);
         } else if (done) {
-
+            deleteAssignmentCard(firebaseKey);
         }
     }
 

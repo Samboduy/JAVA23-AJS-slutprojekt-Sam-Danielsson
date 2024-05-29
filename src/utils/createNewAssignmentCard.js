@@ -12,5 +12,7 @@ export function createNewAssignmentCard(assignment, category) {
         category: category,
         status: "to do"
     }
-    update(assignmentsCardsRef, newCard);
+        update(assignmentsCardsRef, newCard);
+    
+    
 }
