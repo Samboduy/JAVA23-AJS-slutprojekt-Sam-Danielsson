@@ -1,40 +1,30 @@
-import { title } from "process";
+
 import StatusCard from "./StatusCard.jsx";
 import AddAssignmentForm from "./addAssignmentForm.jsx";
 import { useEffect, useState } from "react";
-import getAssignmentCards from "../utils/getAssignmentCards.js";
+import getAssignments from "../utils/getAssignments.js";
 
 export function App() {
 
-    // const cards = [assignment = {
-    //     assigned: "",
-    //     assignment: "Läsa",
-    //     category: "dev frontend",
-    //     status: "to do"
-    // }, assingment = {
-    //     assigned: "Sam",
-    //     assignment: "Koda",
-    //     category: "dev backend",
-    //     status: "in progress"
-    // }];
-
-
     const [cards, setCards] = useState([]);
+    const [error, setError] = useState("");
+
 
     useEffect(() => {
-        getAssignmentCards(setCards);
+        getAssignments(setCards, setError);
     }, [])
 
     function filterCards(status, cards) {
         return cards.filter((card) => card.status == status)
     }
 
+    const statusCardArray = ["to do", "in progress", "done"];
+
+    //shows the scrum board
     return (<div>
-        {/* Filtrera korten med filter() geonom status*/}
         <AddAssignmentForm />
-        <StatusCard title="To Do" cards={filterCards("to do", cards)} />
-        <StatusCard title="In Progress" cards={filterCards("in progress", cards)} />
-        <StatusCard title="Done" cards={filterCards("done", cards)} />
+        <h3 className="error">{error}</h3>
+        {statusCardArray.map((status) => <StatusCard key={status} title={status} cards={filterCards(status, cards)} />)}
 
     </div>)
 }

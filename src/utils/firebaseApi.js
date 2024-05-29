@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import { getDatabase, ref } from "firebase/database";
 
+//information to be able to access the database in firebase
 const firebaseConfig = {
     apiKey: "AIzaSyDhM0Gbn-E6QACFoNxOeCwxQbiKnlS4keY",
     authDomain: "scrum-b3382.firebaseapp.com",
@@ -15,7 +15,6 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 
 export const db = getDatabase(app);
 export const assignmentsCardsRef = ref(db, "/assignments");

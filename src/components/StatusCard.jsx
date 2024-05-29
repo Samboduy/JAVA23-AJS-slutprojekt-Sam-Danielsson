@@ -1,11 +1,12 @@
 import AssignmentCard from "./AssignmentCard";
 
-function StatusCard({ title, cards }) {
+function StatusCard({ title, cards, setError }) {
     console.log(title, cards);
+    //shows the different boards: to do,in progress,done and its cards
     return (
         <div>
             <h1>{title}</h1>
-            {cards.map((card, i) => <AssignmentCard key={i} card={card} />)}
+            {cards.map((card, i) => <AssignmentCard key={card.firebaseKey} card={card} setError={setError} />)}
         </div>
     );
 }

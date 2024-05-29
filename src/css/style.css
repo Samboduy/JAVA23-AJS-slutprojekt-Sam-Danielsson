@@ -2,7 +2,10 @@
     display:flex;
     border: solid black;
 } */
-
+.app{
+    display: flex;
+    border: solid black;
+}
 .ux{
     background-color:lightcoral;
 }

@@ -1,6 +1,6 @@
-import { createNewAssignmentCard } from "../utils/createNewAssignmentCard.js";
+import { createNewAssignment } from "../utils/createNewAssignment.js";
 
-function AddAssignmentForm() {
+function AddAssignmentForm(setError) {
 
     let tempAssignment;
     let tempCategory = "ux";
@@ -16,9 +16,10 @@ function AddAssignmentForm() {
 
     function handleSubmitAssignmentCard(event) {
         event.preventDefault();
-        createNewAssignmentCard(tempAssignment, tempCategory);
+        event.target.reset();
+        createNewAssignment(tempAssignment, tempCategory, setError);
     }
-
+    //shows the form to create new assignment cards
     return (
         <div className="add-assignment-container">
             <h1>Scrum Board</h1>
