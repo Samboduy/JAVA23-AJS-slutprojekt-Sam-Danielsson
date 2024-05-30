@@ -2,19 +2,49 @@
     display:flex;
     border: solid black;
 } */
-.app{
+body{
+    width: 100%;
+    height: 100%;
+}
+#root{
     display: flex;
     border: solid black;
+    justify-content: center;
+    flex-direction: row;
+    height:100%
 }
+
 .ux{
+    display: flex;
     background-color:lightcoral;
+    border: solid burlywood;
+    width:300px;
+    flex-direction: column-reverse;
+    align-items: center;
 }
 .dev-frontend{
+    display: flex;
     background-color: lightblue;
+    border: solid burlywood;
+    width:300px;
+    flex-direction: column-reverse;
+    align-items: center;
 }
 .dev-backend{
+    display: flex;
     background-color: violet;
+    border: solid burlywood;
+    width:300px;
+    flex-direction: column-reverse;
+    align-items: center;
 }
 .assignment-card{
     border:solid black;
+}
+.status-card{
+    display: flex;
+    border: solid red;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

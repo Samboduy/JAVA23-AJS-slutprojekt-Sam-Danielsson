@@ -1,34 +1,29 @@
-import { onValue, ref } from "firebase/database";
-import { assignmentsCardsRef, db } from "./firebaseApi.js";
+import { onValue, } from "firebase/database";
+import { assignmentsCardsRef, } from "./firebaseApi.js";
 export default function getAssignments(setCards, setError) {
     //Gets all the assignments from firebase
-    try {
-        const cardsArr = [];
-        onValue(assignmentsCardsRef, snapshot => {
-            console.log(snapshot.exists());
-            console.log(snapshot, "hallå?");
-            setError("");
-            const cardsObj = snapshot.val();
-            for (const key in cardsObj) {
-                // console.log(key, cardsObj[key]);
 
-                const card = cardsObj[key];
-                console.log(card);
-                newCardObj = {
-                    firebaseKey: key,
-                    assigned: card.assigned,
-                    assignment: card.assignment,
-                    category: card.category,
-                    status: card.status
-                }
-                cardsArr.push(newCardObj);
+    const cardsArr = [];
+    onValue(assignmentsCardsRef, snapshot => {
+        const cardsObj = snapshot.val();
+        console.log(cardsObj);
+        for (const key in cardsObj) {
+            // console.log(key, cardsObj[key]);
+
+            const card = cardsObj[key];
+            //console.log(card);
+            const newCardObj = {
+                firebaseKey: key,
+                assigned: card.assigned,
+                assignment: card.assignment,
+                category: card.category,
+                status: card.status
             }
-            console.log(cardsArr);
-            setCards(cardsArr);
-        })
-
-    } catch (error) {
-        setError("Something went wrong :(,try again later");
-    }
-
+            cardsArr.push(newCardObj);
+        }
+        if (cardsArr.length == 0) {
+            setError("Could not get assignments");
+        }
+        setCards(cardsArr);
+    })
 }

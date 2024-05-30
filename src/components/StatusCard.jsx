@@ -4,9 +4,9 @@ function StatusCard({ title, cards, setError }) {
     console.log(title, cards);
     //shows the different boards: to do,in progress,done and its cards
     return (
-        <div>
+        <div className="status-card">
             <h1>{title}</h1>
-            {cards.map((card, i) => <AssignmentCard key={card.firebaseKey} card={card} setError={setError} />)}
+            {cards.map((card) => <AssignmentCard key={card.firebaseKey} card={card} setError={setError} />)}
         </div>
     );
 }

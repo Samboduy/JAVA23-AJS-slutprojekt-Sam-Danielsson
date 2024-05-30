@@ -1,6 +1,6 @@
 import { createNewAssignment } from "../utils/createNewAssignment.js";
 
-function AddAssignmentForm(setError) {
+function AddAssignmentForm(setError, setFilterState) {
 
     let tempAssignment;
     let tempCategory = "ux";
@@ -19,6 +19,13 @@ function AddAssignmentForm(setError) {
         event.target.reset();
         createNewAssignment(tempAssignment, tempCategory, setError);
     }
+
+    function changeFilterState(event) {
+        const state = event.target.innerText;
+        console.log(state);
+        setFilterState(state);
+    }
+
     //shows the form to create new assignment cards
     return (
         <div className="add-assignment-container">
@@ -35,6 +42,10 @@ function AddAssignmentForm(setError) {
             <div className="ux"><h3 >UX</h3></div>
             <div className="dev-backend"><h3>Dev Backend</h3></div>
             <div className="dev-frontend"><h3>Dev Frontend</h3></div>
+            <label>Sort by {"(default is Created First)"}</label>
+            <button onClick={changeFilterState}>Created First</button>
+            <button onClick={changeFilterState}>Created Last</button>
+            <button onClick={changeFilterState}>Alphabetical Order</button>
         </div>
     );
 }
