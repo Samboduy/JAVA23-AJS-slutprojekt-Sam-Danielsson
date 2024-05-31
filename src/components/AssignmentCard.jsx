@@ -3,6 +3,7 @@ import { updateAssignment } from "../utils/updateAssignment.js";
 
 function AssignmentCard({ card }) {
     const { firebaseKey, assignment, assigned, category, status } = card;
+    let tempName;
 
     function handleInputAssignee(event) {
         tempName = event.target.value;
