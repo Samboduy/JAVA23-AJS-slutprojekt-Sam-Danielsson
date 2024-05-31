@@ -30,4 +30,5 @@ To Do,In Progress and Done
 
 Different Filters
 
-![bild](https://github.com/Samboduy/java23-js-slutprojekt-Sam-Danielsson/assets/151514178/0c799665-8cae-43af-874e-6c3b78bb5272)
+![bild](https://github.com/Samboduy/JAVA23-AJS-slutprojekt-Sam-Danielsson/assets/151514178/e4dc0762-58a3-483e-bdb3-75012a459a0f)
+
