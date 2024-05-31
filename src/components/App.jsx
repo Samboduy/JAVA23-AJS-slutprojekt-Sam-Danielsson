@@ -2,8 +2,9 @@
 import StatusCard from "./StatusCard.jsx";
 import AddAssignmentForm from "./addAssignmentForm.jsx";
 import { useEffect, useState } from "react";
-import getAssignments from "../utils/getAssignments.js";
+import { onValue } from "firebase/database";
 import _, { sortBy } from "underscore";
+import { assignmentsCardsRef } from "../utils/firebaseApi.js";
 
 export function App() {
 
@@ -13,8 +14,35 @@ export function App() {
 
 
     useEffect(() => {
-        getAssignments(setCards, setError);
-    }, [], [filterState])
+        // getAssignments(setCards, setError);
+
+        onValue(assignmentsCardsRef, snapshot => {
+            const cardsObj = snapshot.val();
+            console.log(cardsObj);
+
+            const cardsArr = [];
+            for (const key in cardsObj) {
+                // console.log(key, cardsObj[key]);
+
+                const card = cardsObj[key];
+                //console.log(card);
+                const newCardObj = {
+                    firebaseKey: key,
+                    assigned: card.assigned,
+                    assignment: card.assignment,
+                    category: card.category,
+                    status: card.status
+                }
+                cardsArr.push(newCardObj);
+            }
+            if (cardsArr.length == 0) {
+                setError("something went wrong or there are no assignments");
+            } else {
+                setError("");
+            }
+            setCards(cardsArr);
+        });
+    }, [])
 
     //changes what order of the assignments and filters out the right state, to do, in progress etc...
     function filterCards(status, cards) {

@@ -1,6 +1,6 @@
 import { createNewAssignment } from "../utils/createNewAssignment.js";
 
-function AddAssignmentForm(setError, setFilterState) {
+function AddAssignmentForm({ setError, setFilterState }) {
 
     let tempAssignment;
     let tempCategory = "ux";
