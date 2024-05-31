@@ -5,7 +5,7 @@ function AddAssignmentForm({ setError, setFilterState }) {
     let tempAssignment;
     let tempCategory = "ux";
 
-    function handleChangeInput(event) {
+    function handleAssignmentInput(event) {
         tempAssignment = event.target.value;
     }
     function handleCategoryInput(event) {
@@ -31,7 +31,7 @@ function AddAssignmentForm({ setError, setFilterState }) {
         <div className="add-assignment-container">
             <h1>Scrum Board</h1>
             <form onSubmit={handleSubmitAssignmentCard}>
-                <input type="text" required placeholder="Make a assignment!" onChange={handleChangeInput}></input>
+                <input type="text" required placeholder="Make a assignment!" onChange={handleAssignmentInput}></input>
                 <select onChange={handleCategoryInput}>
                     <option value="ux" >UX</option>
                     <option value="dev backend">Dev Backend</option>
