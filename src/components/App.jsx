@@ -12,37 +12,40 @@ export function App() {
     const [error, setError] = useState("");
     const [filterState, setFilterState] = useState("Created First")
 
+    try {
+        useEffect(() => {
+            // getAssignments(setCards, setError);
 
-    useEffect(() => {
-        // getAssignments(setCards, setError);
+            onValue(assignmentsCardsRef, snapshot => {
+                const cardsObj = snapshot.val();
+                console.log(cardsObj);
 
-        onValue(assignmentsCardsRef, snapshot => {
-            const cardsObj = snapshot.val();
-            console.log(cardsObj);
+                const cardsArr = [];
+                for (const key in cardsObj) {
+                    // console.log(key, cardsObj[key]);
 
-            const cardsArr = [];
-            for (const key in cardsObj) {
-                // console.log(key, cardsObj[key]);
-
-                const card = cardsObj[key];
-                //console.log(card);
-                const newCardObj = {
-                    firebaseKey: key,
-                    assigned: card.assigned,
-                    assignment: card.assignment,
-                    category: card.category,
-                    status: card.status
+                    const card = cardsObj[key];
+                    //console.log(card);
+                    const newCardObj = {
+                        firebaseKey: key,
+                        assigned: card.assigned,
+                        assignment: card.assignment,
+                        category: card.category,
+                        status: card.status
+                    }
+                    cardsArr.push(newCardObj);
                 }
-                cardsArr.push(newCardObj);
-            }
-            if (cardsArr.length == 0) {
-                setError("something went wrong or there are no assignments");
-            } else {
-                setError("");
-            }
-            setCards(cardsArr);
-        });
-    }, [])
+                if (cardsArr.length == 0) {
+                    setError("something went wrong or there are no assignments");
+                } else {
+                    setError("");
+                }
+                setCards(cardsArr);
+            });
+        }, [])
+    } catch (error) {
+        setError("Something went wrong");
+    }
 
     //changes what order of the assignments and filters out the right state, to do, in progress etc...
     function filterCards(status, cards) {
