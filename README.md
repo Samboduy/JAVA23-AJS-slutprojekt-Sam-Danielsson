@@ -1,4 +1,4 @@
-![bild](https://github.com/Samboduy/JAVA23-AJS-slutprojekt-Sam-Danielsson/assets/151514178/23e3e799-73d4-472e-adf1-6d372df53c27)![bild](https://github.com/Samboduy/JAVA23-AJS-slutprojekt-Sam-Danielsson/assets/151514178/2c6ac8dc-77f3-497e-a9fc-a15b67d8645a)# JAVA23-AJS-slutprojekt-Sam-Danielsson
+# JAVA23-AJS-slutprojekt-Sam-Danielsson
 ```
 School: Gritacademy
 Class: Java 23
