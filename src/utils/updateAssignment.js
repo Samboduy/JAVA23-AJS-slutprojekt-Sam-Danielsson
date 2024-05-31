@@ -1,7 +1,6 @@
 import { update, ref } from "firebase/database";
 import { db } from "./firebaseApi.js";
 export function updateAssignment(firebaseCardKey, status, assigned, setError) {
-    console.log(firebaseCardKey, status, assigned);
     // Updates the Assignemnt in firebase
     const cardToUpdateRef = ref(db, `/assignments/${firebaseCardKey}/`);
     try {

@@ -13,7 +13,7 @@ export function createNewAssignment(assignment, category, setError) {
         category: category,
         status: "to do"
     }
-    console.log(newCard);
+
     try {
         update(assignmentsCardsRef, newCard);
     } catch (error) {

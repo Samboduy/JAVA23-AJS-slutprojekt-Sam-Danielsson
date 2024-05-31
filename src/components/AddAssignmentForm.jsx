@@ -11,7 +11,6 @@ function AddAssignmentForm({ setError, setFilterState }) {
     function handleCategoryInput(event) {
         const category = event.target.value;
         tempCategory = category.toLowerCase();
-        console.log(tempCategory);
     }
 
     function handleSubmitAssignmentCard(event) {
@@ -22,7 +21,6 @@ function AddAssignmentForm({ setError, setFilterState }) {
 
     function changeFilterState(event) {
         const state = event.target.innerText;
-        console.log(state);
         setFilterState(state);
     }
 

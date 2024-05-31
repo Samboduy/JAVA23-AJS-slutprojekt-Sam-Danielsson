@@ -7,7 +7,6 @@ function AssignmentCard({ card }) {
 
     function assignedNameInput(event) {
         tempName = event.target.value;
-        console.log(tempName);
     }
 
     //assigns someone to a assignment card, moves the card to done or deletes the card depending on status

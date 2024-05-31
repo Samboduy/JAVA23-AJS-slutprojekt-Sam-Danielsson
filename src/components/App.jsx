@@ -12,20 +12,18 @@ export function App() {
     const [error, setError] = useState("");
     const [filterState, setFilterState] = useState("Created First")
 
+    //Gets all the assignments from firebase
     try {
         useEffect(() => {
             // getAssignments(setCards, setError);
 
             onValue(assignmentsCardsRef, snapshot => {
                 const cardsObj = snapshot.val();
-                console.log(cardsObj);
 
                 const cardsArr = [];
                 for (const key in cardsObj) {
-                    // console.log(key, cardsObj[key]);
 
                     const card = cardsObj[key];
-                    //console.log(card);
                     const newCardObj = {
                         firebaseKey: key,
                         assigned: card.assigned,
@@ -49,7 +47,6 @@ export function App() {
 
     //changes what order of the assignments and filters out the right state, to do, in progress etc...
     function filterCards(status, cards) {
-        console.log(cards, "cards");
         switch (filterState) {
             case "Created First":
                 return cards.filter((card) => card.status == status)
@@ -58,7 +55,6 @@ export function App() {
                 return reversedCards.filter((card) => card.status == status)
             case "Alphabetical Order":
                 const abc = sortBy(cards, "assignment");
-                console.log(abc, "abc");
                 return abc.filter((card) => card.status == status)
         }
     }
